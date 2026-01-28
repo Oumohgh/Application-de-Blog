@@ -13,5 +13,9 @@ use Illuminate\Database\Eloquent\Model;
         'image',
         'categorie_id'
     ];
+     public function Categories()
+    {
+        return $this->BelongsTo(Post::class);
+    }
 }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 
 class CategorieController extends Controller
@@ -33,13 +34,15 @@ class CategorieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Categorie $categorie)
     {
         //
     }
 
-    
-    public function edit(string $id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Categorie $categorie)
     {
         //
     }
@@ -47,7 +50,7 @@ class CategorieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Categorie $categorie)
     {
         //
     }
@@ -55,7 +58,7 @@ class CategorieController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Categorie $categorie)
     {
         //
     }
