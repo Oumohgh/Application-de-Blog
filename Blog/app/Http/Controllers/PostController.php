@@ -1,64 +1,71 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+
+     public function index()
     {
-        //
+        $categories=Post::all();//fetchi data from db and list it in view
+        return view('posts.index',compact('post'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+
+              'titre'=>'required',
+        'contenu'=>'required',
+        'image'=>'required',
+        'categorie_id'=>'required'
+        ]);
+            Post::create($request->all());
+        return redirect()->route('posts.index')
+                        ->with('succes','Post a ajoute avec succes');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        //
+        return view('posts.index',compact('posts'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        return view('posts.edit',compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    $request->validate([
+        'titre'        => 'required',
+        'contenu' => 'required',
+        'image'=>'required',
+        'categorie_id'=>'required'
+
+    ]);
+    $post->update($request->all());
+    return redirect()->route('posts.index')
+                     ->with('success', 'posts a ete modifie');
+}
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class CategorieController extends Controller
 {
@@ -12,23 +13,28 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Categorie::all();
+        // dd($categories);
+        return view('categories.index',compact('categories'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom'=>'required',
+            'description'=>'required'
+        ]);
+        Categorie::create($request->all());
+        return redirect()->route('categories.index');
+
     }
 
     /**
@@ -36,7 +42,9 @@ class CategorieController extends Controller
      */
     public function show(Categorie $categorie)
     {
-        //
+
+
+        return view('categories.index',compact('categorie'));
     }
 
     /**
@@ -44,7 +52,7 @@ class CategorieController extends Controller
      */
     public function edit(Categorie $categorie)
     {
-        //
+        return view('categories.edit',compact('categorie'));
     }
 
     /**
@@ -52,7 +60,15 @@ class CategorieController extends Controller
      */
     public function update(Request $request, Categorie $categorie)
     {
-        //
+
+    $request->validate([
+        'nom'        => 'required',
+        'description' => 'required',
+
+    ]);
+    $categorie->update($request->all());
+    return redirect()->route('categories.index');
+
     }
 
     /**
@@ -60,6 +76,7 @@ class CategorieController extends Controller
      */
     public function destroy(Categorie $categorie)
     {
-        //
+        $categorie->delete();
+        return redirect()->route('categories.index');
     }
 }
