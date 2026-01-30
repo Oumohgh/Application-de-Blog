@@ -40,7 +40,7 @@
 <section class="bg-success text-white text-center py-5">
     <div class="container">
         <h1 class="display-4 fw-bold">Bienvenue sur mon blog</h1>
-        <p class="lead mt-3">Un blog simple avec Bootstrap 5</p>
+        <p class="lead mt-3">Un blog </p>
         <a href="/posts" class="btn btn-light btn-lg mt-3">
             Explorer les publications
         </a>

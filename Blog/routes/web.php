@@ -21,6 +21,13 @@ return view('categories.index');
 Route::get('/posts',function(){
     return view('posts.index');
 });
+
+Route::get('/posts.create',function(){
+    return view('posts.create');
+});
+Route::post('/posts',function(){
+dd(request()->all());
+});
 // Route::get('/categories',[CategorieController::class,'index'])->name('categories.index');
 
 

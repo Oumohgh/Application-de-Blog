@@ -10,8 +10,8 @@ class PostController extends Controller
 
      public function index()
     {
-        $categories=Post::all();//fetchi data from db and list it in view
-        return view('posts.index',compact('post'));
+        $posts=Post::all();//fetchi data from db and list it in view
+        return view('posts.index',compact('posts'));
     }
 
 
@@ -25,8 +25,8 @@ class PostController extends Controller
     {
         $request->validate([
 
-              'titre'=>'required',
-        'contenu'=>'required',
+              'titre'=>'required|max:255',
+        'contenu'=>'required|string',
         'image'=>'required',
         'categorie_id'=>'required'
         ]);
@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.index',compact('posts'));
+        return view('posts.index',compact('post'));
     }
 
     /**
@@ -67,5 +67,9 @@ class PostController extends Controller
     $post->update($request->all());
     return redirect()->route('posts.index')
                      ->with('success', 'posts a ete modifie');
+}
+
+Public function destroy(){
+    return redirect ()->route(tasks.index)->with
 }
 }
