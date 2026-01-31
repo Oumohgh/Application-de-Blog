@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
-
+use App\Models\Categorie;
 class PostController extends Controller
 {
 
@@ -15,13 +15,12 @@ class PostController extends Controller
     }
 
 
-  
+
 public function create()
 {
     $categories = Categorie::all();
     return view('posts.create', compact('categories'));
 }
-    }
 
 
     public function store(Request $request)

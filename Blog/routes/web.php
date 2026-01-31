@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/',[Controller::class, 'index']);
 
 
-<?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\TagController;
+
 
 
 Route::get('/', function () {

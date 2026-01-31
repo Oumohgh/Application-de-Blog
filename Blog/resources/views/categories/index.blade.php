@@ -42,7 +42,7 @@
 <div class="container my-5">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-success">Posts</h2>
+        <h2 class="text-success"> Categories</h2>
         <a href="/posts.create" class="btn btn-danger">
             Create Post
         </a>
@@ -55,8 +55,8 @@
                     <tr>
                         <th>#</th>
                         <th>Title</th>
-                        <th>Created At</th>
-                        <th class="text-end">Actions</th>
+                        <th>Created A</th>
+               
                     </tr>
                 </thead>
                 <tbody>
@@ -67,7 +67,7 @@
 
                         <tr>
                             <td colspan="4" class="text-center text-muted">
-                                No posts found
+                                No Categories found
                             </td>
                         </tr>
 

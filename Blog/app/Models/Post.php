@@ -1,25 +1,23 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-
-    class Post extends Model
+class Post extends Model
 {
     protected $fillable = [
         'titre',
         'contenu',
         'image',
-        'categorie_id'
+        'categorie_id',
     ];
-     public function Categories()
+    public function Categories()
     {
         return $this->BelongsTo(Post::class);
     }
-    public function Tags(){
+    public function Tags()
+    {
         return $this->belongsToMany(Tag::class);
     }
 }
-

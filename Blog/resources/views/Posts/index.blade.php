@@ -15,11 +15,7 @@
         <a href="{{ route('posts.create') }}" class="btn btn-success">Add Post</a>
     </div>
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    
 
     <table class="table table-bordered table-striped">
         <thead class="table-danger">

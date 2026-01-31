@@ -42,14 +42,14 @@
     <div class="card shadow-sm">
         <div class="card-body">
 
-            <form action="{{ route('posts.update', $post->id) }}" method="POST">
+            <form action="{{ route('posts.update', $post) }}" method="POST">
                 @csrf
                 @method('PUT')
 
                 <div class="mb-3">
                     <label class="form-label">Title</label>
                     <input type="text" name="title"
-                           value="{{ $post->title }}"
+                           value="{{ $post->titre }}"
                            class="form-control" required>
                 </div>
 
