@@ -8,14 +8,9 @@ use Illuminate\Database\Seeder;
 
 class CategorieSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    
     public function run(): void
     {
-        Categorie::create( [
-            'name'=>'Sport',
-             'description'=>'football'
-        ]);
+        Categorie::factory(10)->create();
     }
 }
