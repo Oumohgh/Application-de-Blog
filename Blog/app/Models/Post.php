@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
     class Post extends Model
@@ -16,6 +17,9 @@ use Illuminate\Database\Eloquent\Model;
      public function Categories()
     {
         return $this->BelongsTo(Post::class);
+    }
+    public function Tags(){
+        return $this->belongsToMany(Tag::class);
     }
 }
 

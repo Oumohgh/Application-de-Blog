@@ -11,13 +11,16 @@ class PostController extends Controller
      public function index()
     {
         $posts=Post::all();//fetchi data from db and list it in view
-        return view('posts.index',compact('posts'));
+        return view('Posts.index',compact('posts'));
     }
 
 
-    public function create()
-    {
-        return view('posts.create');
+  
+public function create()
+{
+    $categories = Categorie::all();
+    return view('posts.create', compact('categories'));
+}
     }
 
 
@@ -69,7 +72,9 @@ class PostController extends Controller
                      ->with('success', 'posts a ete modifie');
 }
 
-Public function destroy(){
-    return redirect ()->route(tasks.index)->with
+Public function destroy(Post $post){
+$post->delete();
+    return redirect()->route('posts.index')->with('success', 'post a ete supprime');
 }
 }
+

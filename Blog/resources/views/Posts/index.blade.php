@@ -2,80 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts Page</title>
-
-
+    <title>Posts</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="/app">Blog</a>
+<div class="container mt-5">
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="d-flex justify-content-between mb-3">
+        <h2 class="text-danger">Posts</h2>
+        <a href="{{ route('posts.create') }}" class="btn btn-success">Add Post</a>
+    </div>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/app">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categories">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/posts">Posts</a>
-                </li>
-            </ul>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
         </div>
-    </div>
-</nav>
+    @endif
 
+    <table class="table table-bordered table-striped">
+        <thead class="table-danger">
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
 
+        <tbody>
+        @foreach($posts as $post)
+            <tr>
+                <td>{{ $post->titre }}</td>
+                <td>{{ Str::limit($post->contenu, 50) }}</td>
+                <td>{{ $post->categorie_id }}</td>
 
+                <td class="d-flex gap-2">
+                    <a href="{{ route('posts.edit', $post) }}" class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
 
-<div class="container my-5">
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-success">Posts</h2>
-        <a href="/posts.create" class="btn btn-danger">
-            Create Post
-        </a>
-    </div>
-
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <table class="table table-striped align-middle">
-                <thead class="table-success">
-                    <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Created At</th>
-                        <th class="text-end">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                        <tr>
-
-                        </tr>
-
-                        <tr>
-                            <td colspan="4" class="text-center text-muted">
-                                No posts found
-                            </td>
-                        </tr>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
+                    <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 
 </div>
 
-
+</body>
+</html>

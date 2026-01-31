@@ -37,7 +37,7 @@
 </nav>
 <div class="container my-5">
 
-    <h2 class="text-success mb-4">✏️ Edit Post</h2>
+    <h2 class="text-success mb-4">Edit Post</h2>
 
     <div class="card shadow-sm">
         <div class="card-body">
@@ -61,10 +61,10 @@
 
                 <div class="d-flex justify-content-end">
                     <a href="{{ route('posts.index') }}" class="btn btn-secondary me-2">
-                        Cancel
+                        return
                     </a>
                     <button type="submit" class="btn btn-success">
-                        Update
+                        Modifier
                     </button>
                 </div>
 

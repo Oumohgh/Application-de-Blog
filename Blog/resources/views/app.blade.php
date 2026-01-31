@@ -36,7 +36,7 @@
     </div>
 </nav>
 
-<!-- Hero Section -->
+
 <section class="bg-success text-white text-center py-5">
     <div class="container">
         <h1 class="display-4 fw-bold">Bienvenue sur mon blog</h1>
