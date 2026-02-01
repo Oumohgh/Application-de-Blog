@@ -15,7 +15,7 @@
         <a href="{{ route('posts.create') }}" class="btn btn-success">Add Post</a>
     </div>
 
-    
+
 
     <table class="table table-bordered table-striped">
         <thead class="table-danger">
@@ -31,8 +31,8 @@
         @foreach($posts as $post)
             <tr>
                 <td>{{ $post->titre }}</td>
-                <td>{{ Str::limit($post->contenu, 50) }}</td>
-                <td>{{ $post->categorie_id }}</td>
+                <td>{{($post->contenu )}}</td>
+                <td>{{ $post->categorie-> }}</td>
 
                 <td class="d-flex gap-2">
                     <a href="{{ route('posts.edit', $post) }}" class="btn btn-warning btn-sm">

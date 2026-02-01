@@ -10,7 +10,9 @@ class PostController extends Controller
 
      public function index()
     {
-        $posts=Post::all();//fetchi data from db and list it in view
+
+        // $posts=Post::all();//fetchi data
+    $posts=Post::with('Categories')->get();
         return view('Posts.index',compact('posts'));
     }
 

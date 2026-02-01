@@ -16,7 +16,7 @@ class Post extends Model
     use HasFactory;
     public function Categories()
     {
-        return $this->BelongsTo(Post::class);
+        return $this->BelongsTo(Categorie::class);
     }
     public function Tags()
     {
